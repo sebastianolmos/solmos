@@ -1,0 +1,14 @@
+[[main]]
+  name = "Sobre mí"
+  pageRef = "/about"
+  weight = 10
+
+[[main]]
+  name = "Proyectos"
+  pageRef = "/projects"
+  weight = 20
+
+[[main]]
+  name = "Currículum"
+  pageRef = "/resume"
+  weight = 30

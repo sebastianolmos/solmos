@@ -1,8 +1,8 @@
 disabled = false
 locale = "en"
 label = "English"
-weight = 1
-title = "Blowfish"
+weight = 2
+title = "Sebastián"
 
 [params]
   displayName = "EN"
@@ -14,7 +14,8 @@ title = "Blowfish"
   # description = "My awesome website"
   # copyright = "Copy, _right?_ :thinking_face:"
 
-# [params.author]
+[params.author]
+  headline = "Software Engineer"
 #   name = "Your name here"
 #   email = "youremail@example.com"
 #   image = "img/blowfish_logo.png"

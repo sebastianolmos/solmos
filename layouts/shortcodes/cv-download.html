@@ -1,0 +1,4 @@
+{{- $files := dict "es" "sebastian-cv-es.pdf" "en" "sebastian-resume-en.pdf" -}}
+{{- with index $files .Page.Language.Lang -}}
+  <a href="{{ printf "cv/%s" . | relURL }}" download>{{ i18n "cv.download" }}</a>
+{{- end -}}

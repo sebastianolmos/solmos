@@ -1,0 +1,36 @@
+/* Lavender neutrals, violet accents and a softer orchid secondary scale. */
+:root {
+  --color-neutral: 252, 250, 255;
+  --color-neutral-50: 248, 246, 252;
+  --color-neutral-100: 241, 237, 247;
+  --color-neutral-200: 229, 223, 239;
+  --color-neutral-300: 207, 198, 222;
+  --color-neutral-400: 173, 160, 194;
+  --color-neutral-500: 104, 91, 126;
+  --color-neutral-600: 86, 73, 107;
+  --color-neutral-700: 64, 53, 83;
+  --color-neutral-800: 32, 26, 47;
+  --color-neutral-900: 25, 19, 39;
+
+  --color-primary-50: 249, 245, 255;
+  --color-primary-100: 240, 229, 255;
+  --color-primary-200: 227, 205, 252;
+  --color-primary-300: 211, 173, 248;
+  --color-primary-400: 193, 143, 241;
+  --color-primary-500: 133, 69, 196;
+  --color-primary-600: 114, 53, 176;
+  --color-primary-700: 93, 38, 150;
+  --color-primary-800: 76, 30, 119;
+  --color-primary-900: 59, 25, 89;
+
+  --color-secondary-50: 255, 245, 252;
+  --color-secondary-100: 250, 230, 246;
+  --color-secondary-200: 245, 207, 233;
+  --color-secondary-300: 237, 174, 217;
+  --color-secondary-400: 224, 137, 198;
+  --color-secondary-500: 174, 72, 147;
+  --color-secondary-600: 151, 54, 126;
+  --color-secondary-700: 126, 42, 105;
+  --color-secondary-800: 101, 33, 84;
+  --color-secondary-900: 77, 27, 65;
+}

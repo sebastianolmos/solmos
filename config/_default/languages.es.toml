@@ -2,7 +2,7 @@ disabled = false
 locale = "es"
 label = "Español"
 weight = 1
-title = "Sebastián"
+title = "Sebastián Olmos"
 
 [params]
   displayName = "ES"

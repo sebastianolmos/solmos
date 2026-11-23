@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      /* Vertical travel and lateral drift use independent clocks. */
+      .warm-cloud {
+        --sway: 26px;
+        animation: warm-drift 16s ease-in-out -5s infinite alternate,
+                   lateral-drift 37s ease-in-out -11s infinite;
+      }
+      .cool-cloud {
+        --sway: 30px;
+        animation: cool-drift 22s ease-in-out -7s infinite alternate,
+                   lateral-drift 53s ease-in-out -29s infinite;
+      }
+      .dust-lane {
+        --sway: 8px;
+        animation: dust-drift 36s ease-in-out -18s infinite alternate,
+                   lateral-drift 97s ease-in-out -19s infinite;
+      }
+      .bright-stars > use {
+        animation: starlight var(--period) ease-in-out var(--phase) infinite;
+      }
+    }
+
+    @keyframes warm-drift {
+      from { transform: translate(60px, 40px); }
+      to { transform: translate(60px, -210px); }
+    }
+    @keyframes cool-drift {
+      from { transform: translate(-64px, -42px); }
+      to { transform: translate(-64px, 220px); }
+    }
+    @keyframes dust-drift {
+      from { transform: translateY(24px); }
+      to { transform: translateY(-24px); }
+    }
+    @keyframes lateral-drift {
+      0%, 100% { translate: calc(-1 * var(--sway)) 0; }
+      38% { translate: var(--sway) 0; }
+      72% { translate: calc(-.35 * var(--sway)) 0; }
+    }
+    @keyframes starlight {
+      0%, 100% { opacity: .28; }
+      45% { opacity: 1; }
+    }
+  </style>
+
+  <defs>
+    <radialGradient id="space" cx=".55" cy=".55" r=".72">
+      <stop stop-color="#19213a"/>
+      <stop offset="1" stop-color="#070a15"/>
+    </radialGradient>
+    <radialGradient id="amber">
+      <stop stop-color="#ffc494" stop-opacity=".88"/>
+      <stop offset=".31" stop-color="#e97c76" stop-opacity=".66"/>
+      <stop offset=".58" stop-color="#a44880" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#6d306f" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="teal">
+      <stop stop-color="#7de6dc" stop-opacity=".74"/>
+      <stop offset=".29" stop-color="#46aaa9" stop-opacity=".53"/>
+      <stop offset=".61" stop-color="#2e6a84" stop-opacity=".29"/>
+      <stop offset="1" stop-color="#234971" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="dust" x1="0" y1="1" x2="1" y2="0">
+      <stop stop-color="#e8798b" stop-opacity="0"/>
+      <stop offset=".30" stop-color="#ffc7a1" stop-opacity=".82"/>
+      <stop offset=".51" stop-color="#a98cbc" stop-opacity=".33"/>
+      <stop offset=".74" stop-color="#9ce5d9" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#97dedc" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="cloud-edges" x="-20%" y="-50%" width="140%" height="200%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency=".005 .012" numOctaves="3" seed="18" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="104" xChannelSelector="R" yChannelSelector="G"/>
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+    <radialGradient id="star-glow">
+      <stop stop-color="#fff6da" stop-opacity=".78"/>
+      <stop offset=".23" stop-color="#bbdbe9" stop-opacity=".27"/>
+      <stop offset="1" stop-color="#bbdbe9" stop-opacity="0"/>
+    </radialGradient>
+    <g id="bright-star">
+      <circle r="15" fill="url(#star-glow)"/>
+      <path d="M-5 0H5M0-5V5" stroke="#fff2dc" stroke-width=".6" opacity=".6"/>
+      <circle r="1.35" fill="#fff6e7"/>
+    </g>
+  </defs>
+
+  <path d="M0 0H1600V1000H0Z" fill="url(#space)"/>
+
+  <g class="warm-cloud" fill="url(#amber)">
+    <ellipse cx="415" cy="697" rx="520" ry="225" transform="rotate(-31 415 697)"/>
+    <ellipse cx="696" cy="420" rx="330" ry="152" transform="rotate(-36 696 420)" opacity=".52"/>
+  </g>
+  <g class="cool-cloud" fill="url(#teal)">
+    <ellipse cx="1220" cy="306" rx="548" ry="206" transform="rotate(-24 1220 306)"/>
+    <ellipse cx="1037" cy="585" rx="370" ry="157" transform="rotate(-40 1037 585)" opacity=".43"/>
+  </g>
+
+  <!-- Distorted strokes give the cloud an uneven dust lane. -->
+  <g class="dust-lane">
+    <g fill="none" filter="url(#cloud-edges)">
+      <path d="M104 915C350 795 321 646 543 580S767 557 921 416 1102 252 1512 143"
+            stroke="#080c1c" stroke-width="49" opacity=".72"/>
+      <path d="M60 928C337 841 312 683 545 604S752 604 926 452 1128 271 1550 160"
+            stroke="url(#dust)" stroke-width="28"/>
+      <path d="M154 838C337 694 323 584 549 528S712 521 911 356 1160 221 1450 104"
+            stroke="url(#dust)" stroke-width="12" opacity=".78"/>
+    </g>
+  </g>
+
+  <!-- Faint stars are steady. Each bright star has its own period and phase. -->
+  <g fill="none" stroke="#dcecf7" stroke-width="2" stroke-linecap="round" opacity=".53">
+    <path d="M36 108h.1M64 455h.1M89 733h.1M112 203h.1M147 38h.1M156 366h.1M171 528h.1M188 878h.1
+             M224 117h.1M235 756h.1M244 311h.1M275 450h.1M291 949h.1M313 67h.1M337 534h.1M352 293h.1
+             M368 823h.1M401 126h.1M434 407h.1M442 966h.1M476 185h.1M489 699h.1M508 364h.1M537 916h.1
+             M558 764h.1M566 611h.1M590 53h.1M604 243h.1M636 584h.1M650 856h.1M668 123h.1M681 754h.1
+             M708 302h.1M720 930h.1M752 74h.1M773 520h.1M805 156h.1M819 683h.1M847 841h.1M864 386h.1
+             M889 88h.1M906 787h.1M920 492h.1M959 278h.1M961 958h.1M1006 152h.1M1018 654h.1M1051 52h.1
+             M1065 873h.1M1090 382h.1M1122 724h.1M1145 189h.1M1167 942h.1M1184 520h.1M1213 74h.1M1221 367h.1
+             M1251 796h.1M1274 583h.1M1294 214h.1M1330 461h.1M1344 897h.1M1371 126h.1M1405 354h.1M1422 701h.1
+             M1451 565h.1M1460 973h.1M1481 42h.1M1507 225h.1M1531 849h.1M1544 433h.1M1575 124h.1M1587 651h.1"/>
+  </g>
+  <g class="bright-stars" opacity=".9">
+    <use href="#bright-star" x="212" y="264" style="--period: 4.7s; --phase: -0.8s"/>
+    <use href="#bright-star" x="344" y="685" style="--period: 7.1s; --phase: -4.2s"/>
+    <use href="#bright-star" x="486" y="504" style="--period: 5.3s; --phase: -2.5s"/>
+    <use href="#bright-star" x="612" y="814" style="--period: 8.3s; --phase: -6.1s"/>
+    <use href="#bright-star" x="739" y="186" style="--period: 6.7s; --phase: -0.3s"/>
+    <use href="#bright-star" x="894" y="594" style="--period: 4.3s; --phase: -3.5s"/>
+    <use href="#bright-star" x="1042" y="342" style="--period: 7.7s; --phase: -2.1s"/>
+    <use href="#bright-star" x="1172" y="285" style="--period: 5.9s; --phase: -4.7s"/>
+    <use href="#bright-star" x="1365" y="746" style="--period: 9.1s; --phase: -7.9s"/>
+    <use href="#bright-star" x="1495" y="520" style="--period: 6.1s; --phase: -1.5s"/>
+  </g>
+</svg>

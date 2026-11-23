@@ -5,7 +5,7 @@
 # Refer to the theme docs for more details about each of these parameters.
 # https://blowfish.page/docs/configuration/#theme-parameters
 
-colorScheme = "blowfish"
+colorScheme = "solmos"
 defaultAppearance = "light" # valid options: light or dark
 autoSwitchAppearance = true
 
@@ -25,8 +25,8 @@ disableImageOptimizationMD = false
 disableTextInHeader = false
 # backgroundImageWidth = 1200
 
-# defaultBackgroundImage = "IMAGE.jpg" # used as default for background images
-# backgroundCanvas = false # render defaultBackgroundImage as a fixed backdrop on every page
+defaultBackgroundImage = "images/nebula.svg"
+backgroundCanvas = true
 # defaultFeaturedImage = "IMAGE.jpg" # used as default for featured images in all articles
 # defaultSocialImage = "/android-chrome-512x512.png" # used as default for social media sharing (Open Graph and Twitter)
 hotlinkFeatureImage = false
@@ -54,15 +54,15 @@ forgejoDefaultServer = "https://codeberg.org"
 # metaDescriptionOrder = ["summary", "description", "site"] # Controls the fallback order for the HTML meta description. Valid values are "summary", "description", and "site".
 
 [author]
-  name = "Sebastián"
+  name = "Sebastián Olmos"
   links = [
     { github = "https://github.com/sebastianolmos" },
     { linkedin = "https://www.linkedin.com/" },
   ]
 
 [header]
-  layout = "fixed" # valid options: basic, fixed, fixed-fill, fixed-gradient, fixed-fill-blur, floating
-  # mobileMenuStyle = "fullscreen" # valid options: fullscreen, dropdown
+  layout = "floating"
+  mobileMenuStyle = "dropdown"
 
 [footer]
   showMenu = true

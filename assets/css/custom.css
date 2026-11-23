@@ -1,0 +1,88 @@
+:root {
+  --nebula-fade-distance: 300; /* CSS pixels */
+  --nebula-visibility-start: .68;
+  --nebula-visibility-end: .34;
+
+  --nebula-light-invert: 94%;
+  --nebula-light-hue: 180deg;
+  --nebula-light-saturation: 1.75;
+  --nebula-light-contrast: .96;
+  --nebula-light-brightness: 1.10;
+
+  --home-intro-padding-top: 1.5rem;
+  --home-intro-padding-bottom: 1.5rem;
+  --home-projects-gap: clamp(1.5rem, 5svh, 3rem);
+}
+
+:root.dark {
+  --nebula-visibility-start: .64;
+  --nebula-visibility-end: .16;
+}
+
+/* Keep Blowfish's floating header and round the frame and its backdrop together. */
+body > header > .fixed > .rounded-2xl {
+  max-width: 72rem;
+  border-radius: 999px;
+}
+
+body > header > .fixed > .rounded-2xl > .backdrop-blur-xl {
+  border-radius: inherit;
+}
+
+#the-top:focus-within {
+  z-index: 101;
+}
+
+.home-intro {
+  --home-header-space: 8rem; /* Blowfish's floating header spacer (min-h-32). */
+  box-sizing: border-box;
+  min-block-size: calc(100svh - var(--home-header-space));
+  padding-block: var(--home-intro-padding-top) calc(var(--home-intro-padding-bottom) + var(--home-header-space));
+  margin-block-end: var(--home-projects-gap);
+}
+
+[data-nebula-home] header a:not(:hover, :focus-visible) {
+  color: rgb(var(--color-primary-700));
+}
+
+:root.dark [data-nebula-home] header a:not(:hover, :focus-visible) {
+  color: rgb(var(--color-primary-300));
+}
+
+#background-canvas {
+  opacity: var(--nebula-visibility-end);
+}
+
+body:has([data-nebula-home]) #background-canvas {
+  opacity: calc(
+    var(--nebula-visibility-start) +
+      (var(--nebula-visibility-end) - var(--nebula-visibility-start)) * var(--nebula-scroll-progress, 0)
+  );
+}
+
+/* The body color provides the fade. Filter the artwork itself in light mode. */
+#background-canvas > img + div {
+  display: none;
+}
+
+:root:not(.dark) #background-canvas {
+  filter:
+    invert(var(--nebula-light-invert))
+    hue-rotate(var(--nebula-light-hue))
+    saturate(var(--nebula-light-saturation))
+    contrast(var(--nebula-light-contrast))
+    brightness(var(--nebula-light-brightness));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #background-canvas {
+    background:
+      radial-gradient(ellipse at 28% 69%, #a65d67, transparent 43%),
+      radial-gradient(ellipse at 72% 32%, #408888, transparent 45%),
+      #10182a;
+  }
+
+  #background-canvas > img {
+    display: none;
+  }
+}

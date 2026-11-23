@@ -1,0 +1,4 @@
+{{ if and .IsHome site.Params.backgroundCanvas }}
+  {{ $fade := resources.Get "js/nebula-fade.js" | resources.Minify | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+  <script defer src="{{ $fade.RelPermalink }}" integrity="{{ $fade.Data.Integrity }}"></script>
+{{ end }}

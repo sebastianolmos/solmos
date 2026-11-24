@@ -2,3 +2,6 @@ shortcode:
   recent_articles: "Últimos proyectos"
 cv:
   download: "Descargar CV en PDF"
+home:
+  featured_projects: "Proyectos destacados"
+  view_more_projects: "Ver más proyectos"

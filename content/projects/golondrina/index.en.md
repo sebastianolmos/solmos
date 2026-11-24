@@ -1,5 +1,6 @@
 ---
 title: Golondrina
+headless: true
 date: 2025-04-10
 summary: Placeholder write-up for Golondrina’s goal and outcome.
 tags: [Software]

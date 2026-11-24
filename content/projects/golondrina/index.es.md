@@ -1,5 +1,6 @@
 ---
 title: Golondrina
+headless: true
 date: 2025-04-10
 summary: Ficha provisional que presentaré con el objetivo y el resultado de Golondrina.
 tags: [Software]

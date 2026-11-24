@@ -1,4 +1,7 @@
 shortcode:
   recent_articles: "Latest projects"
 cv:
-  download: "Download résumé (PDF)"
+  download: "Download resume (PDF)"
+home:
+  featured_projects: "Featured projects"
+  view_more_projects: "View more projects"

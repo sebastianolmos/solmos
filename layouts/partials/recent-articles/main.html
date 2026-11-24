@@ -1,0 +1,43 @@
+{{ if .Site.Params.homepage.showRecent | default false }}
+  {{ $featuredProjects := .Site.Params.homepage.featuredProjects | default slice }}
+  <h2 class="mt-8 mb-10 text-2xl font-extrabold">{{ i18n "home.featured_projects" | emojify }}</h2>
+
+  {{ if and .Site.Params.homepage.cardView (not .Site.Params.homepage.cardViewScreenWidth) | default false }}
+    <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+      {{ range $featuredProjects }}
+        {{ with site.GetPage (printf "/projects/%s" .) }}
+          {{ partial "article-link/card.html" . }}
+        {{ end }}
+      {{ end }}
+    </section>
+  {{ else if and .Site.Params.homepage.cardView .Site.Params.homepage.cardViewScreenWidth | default false }}
+    <div class="relative w-screen max-w-[1600px] px-[30px] start-[calc(max(-50vw,-800px)+50%)]">
+      <section class="w-full grid gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+        {{ range $featuredProjects }}
+          {{ with site.GetPage (printf "/projects/%s" .) }}
+            {{ partial "article-link/card.html" . }}
+          {{ end }}
+        {{ end }}
+      </section>
+    </div>
+  {{ else }}
+    <section class="space-y-10 w-full">
+      {{ range $featuredProjects }}
+        {{ with site.GetPage (printf "/projects/%s" .) }}
+          {{ partial "article-link/simple.html" . }}
+        {{ end }}
+      {{ end }}
+    </section>
+  {{ end }}
+
+  {{ if .Site.Params.homepage.showMoreLink | default false }}
+    {{ $showMoreLinkDest := .Site.Params.homepage.showMoreLinkDest | default "/posts/" }}
+    <div class="mt-10 flex justify-center">
+      <a
+        href="{{ $showMoreLinkDest | relLangURL }}"
+        class="rounded border border-primary-500 px-4 py-2 font-semibold hover:border-transparent hover:text-primary-500 prose dark:prose-invert">
+        {{ i18n "home.view_more_projects" | markdownify }}
+      </a>
+    </div>
+  {{ end }}
+{{ end }}

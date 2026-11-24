@@ -86,3 +86,39 @@ body:has([data-nebula-home]) #background-canvas {
     display: none;
   }
 }
+
+/* Give the CV timeline enough room for its dates on desktop. */
+@media (min-width: 48rem) {
+  body:has(.article-content a[href^="/cv/"]) .article-content {
+    max-width: 72rem;
+  }
+
+  body:has(.article-content a[href^="/cv/"]) .article-content .flex.justify-between > h3 {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+/* Add a little breathing room between the floating header edge and the site name. */
+body > header .main-menu > a.text-base.font-medium {
+  margin-inline-start: 0.5rem;
+}
+
+/* Give project articles room beside Blowfish's table of contents. */
+@media (min-width: 64rem) {
+  body:has(#TableOfContents) #single_header,
+  body:has(#TableOfContents) .article-content {
+    max-width: 52rem;
+  }
+}
+
+/* Highlight project cards on hover and keyboard focus. */
+article.article-link--card {
+  outline: 1px solid transparent;
+  outline-offset: 2px;
+}
+
+article.article-link--card:hover,
+article.article-link--card:focus-within {
+  outline-color: rgb(var(--color-primary-500));
+}

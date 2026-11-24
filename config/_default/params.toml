@@ -57,7 +57,9 @@ forgejoDefaultServer = "https://codeberg.org"
   name = "Sebastián Olmos"
   links = [
     { github = "https://github.com/sebastianolmos" },
-    { linkedin = "https://www.linkedin.com/" },
+    { linkedin = "https://www.linkedin.com/in/sebastolmos/" },
+    { itch-io = "https://sebastianolmos.itch.io/" },
+    { email = "mailto:sebastolmos@gmail.com" },
   ]
 
 [header]
@@ -78,8 +80,9 @@ forgejoDefaultServer = "https://codeberg.org"
   #homepageImage = "IMAGE.jpg" # used in: hero, and card
   showRecent = true
   showRecentItems = 3
-  showMoreLink = false
-  showMoreLinkDest = "/posts/"
+  featuredProjects = ["chucao-web", "journey-engine", "particle-system"]
+  showMoreLink = true
+  showMoreLinkDest = "/projects/"
   cardView = true
   cardViewScreenWidth = false
   layoutBackgroundBlur = false # only used when layout equals background

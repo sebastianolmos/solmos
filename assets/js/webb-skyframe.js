@@ -7,6 +7,7 @@
     if (!button || !image || !status || !workerBaseURL) return;
 
     let currentId = root.dataset.initialId || "";
+    root.dataset.currentId = currentId;
     let latestRequest = 0;
 
     const selectCard = async (exclude, requestNumber, retry = true) => {
@@ -19,6 +20,7 @@
       if (typeof selection.id !== "string" || typeof selection.alt !== "string" || typeof selection.imageUrl !== "string") {
         throw new Error("invalid_selection");
       }
+      if (requestNumber !== latestRequest) return;
 
       const cardURL = new URL(selection.imageUrl, `${workerBaseURL}/`);
       const workerOrigin = new URL(workerBaseURL).origin;
@@ -43,15 +45,15 @@
       image.src = cardURL.href;
       image.alt = selection.alt;
       currentId = selection.id;
+      root.dataset.currentId = selection.id;
     };
 
-    button.addEventListener("click", async () => {
-      if (button.disabled) return;
+    const requestCard = async (exclude) => {
       const requestNumber = ++latestRequest;
       root.setAttribute("aria-busy", "true");
       status.textContent = root.dataset.loadingMessage || "";
       try {
-        await selectCard(currentId, requestNumber);
+        await selectCard(exclude, requestNumber);
         if (requestNumber === latestRequest) status.textContent = "";
       } catch (error) {
         if (requestNumber === latestRequest) {
@@ -62,6 +64,12 @@
       } finally {
         if (requestNumber === latestRequest) root.setAttribute("aria-busy", "false");
       }
+    };
+
+    button.addEventListener("click", () => {
+      if (!button.disabled) void requestCard(currentId);
     });
+
+    void requestCard();
   });
 })();

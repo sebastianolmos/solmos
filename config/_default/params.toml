@@ -50,6 +50,9 @@ forgejoDefaultServer = "https://codeberg.org"
   browserRedirectHomeOnly = true # Restrict browser-language redirects to home pages.
   storedLanguageRedirect = true # Redirect to the stored language when a matching translation exists.
 
+[webbSkyframe]
+  workerBaseURL = "https://webb-skyframe-github-card.sebastianolmos.workers.dev"
+
 [seo]
 # metaDescriptionOrder = ["summary", "description", "site"] # Controls the fallback order for the HTML meta description. Valid values are "summary", "description", and "site".
 

@@ -2,6 +2,12 @@ shortcode:
   recent_articles: "Latest projects"
 cv:
   download: "Download resume (PDF)"
+webbSkyframe:
+  next: Next
+  loading: Loading another observation…
+  error: Could not load another card. The current observation is unchanged.
+  removed: This observation is no longer available.
+  unavailable: Interaction will be available soon.
 home:
   featured_projects: "Featured projects"
   view_more_projects: "View more projects"

@@ -2,6 +2,12 @@ shortcode:
   recent_articles: "Últimos proyectos"
 cv:
   download: "Descargar CV en PDF"
+webbSkyframe:
+  next: Siguiente
+  loading: Cargando otra observación…
+  error: No se pudo cargar otra tarjeta. Se conserva la observación actual.
+  removed: La observación dejó de estar disponible.
+  unavailable: La interacción estará disponible próximamente.
 home:
   featured_projects: "Proyectos destacados"
   view_more_projects: "Ver más proyectos"

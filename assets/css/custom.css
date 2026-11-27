@@ -122,3 +122,65 @@ article.article-link--card:hover,
 article.article-link--card:focus-within {
   outline-color: rgb(var(--color-primary-500));
 }
+
+.webb-card {
+  margin-block: 2rem;
+}
+
+.webb-card__frame {
+  width: 100%;
+  aspect-ratio: 1080 / 570;
+  overflow: hidden;
+  border: 1px solid rgb(var(--color-neutral-300));
+  border-radius: 1rem;
+  background: #090b10;
+}
+
+.webb-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.webb-card__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 1rem;
+}
+
+.webb-card__next {
+  border: 1px solid rgb(var(--color-primary-600));
+  border-radius: 999px;
+  padding: 0.55rem 1rem;
+  background: rgb(var(--color-primary-600));
+  color: white;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.webb-card__next:hover:not(:disabled) {
+  background: rgb(var(--color-primary-700));
+}
+
+.webb-card__next:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-500));
+  outline-offset: 3px;
+}
+
+.webb-card__next:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+
+.webb-card__status {
+  margin: 0;
+  color: rgb(var(--color-neutral-600));
+}
+
+:root.dark .webb-card__status {
+  color: rgb(var(--color-neutral-300));
+}

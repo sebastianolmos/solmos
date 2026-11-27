@@ -1,0 +1,18 @@
+{{- $id := .Get "id" -}}
+{{- $image := .Get "image" -}}
+{{- $alt := .Get "alt" -}}
+{{- $workerURL := strings.TrimRight "/" (site.Params.webbskyframe.workerbaseurl | default "") -}}
+{{- $script := resources.Get "js/webb-skyframe.js" | minify | fingerprint -}}
+<div class="webb-card" data-webb-card data-initial-id="{{ $id }}" data-worker-url="{{ $workerURL }}" data-next-label="{{ i18n "webbSkyframe.next" }}" data-loading-message="{{ i18n "webbSkyframe.loading" }}" data-error-message="{{ i18n "webbSkyframe.error" }}" data-removed-message="{{ i18n "webbSkyframe.removed" }}" data-unavailable-message="{{ i18n "webbSkyframe.unavailable" }}">
+  <div class="webb-card__frame">
+    <img class="webb-card__image" src="{{ .Page.RelPermalink }}{{ $image }}" alt="{{ $alt }}" width="1080" height="570" data-webb-image>
+  </div>
+  <div class="webb-card__controls">
+    <button class="webb-card__next" type="button" data-webb-next {{ if not $workerURL }}disabled aria-describedby="webb-card-status"{{ end }}>{{ i18n "webbSkyframe.next" }}</button>
+    <p class="webb-card__status" id="webb-card-status" data-webb-status aria-live="polite" aria-atomic="true">{{ if $workerURL }}{{ else }}{{ i18n "webbSkyframe.unavailable" }}{{ end }}</p>
+  </div>
+</div>
+{{- if not (.Page.Store.Get "webbSkyframeScript") -}}
+  {{- .Page.Store.Set "webbSkyframeScript" true -}}
+  <script defer src="{{ $script.RelPermalink }}"></script>
+{{- end -}}
